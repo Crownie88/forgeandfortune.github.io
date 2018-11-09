@@ -2684,6 +2684,11 @@ Rarities
 }
 
 #mastery-table .mastery-row .statBox img.item { 
+    content:url("../images/star_incomplete.png"); 
+}
+
+#mastery-table .mastery-row .statBox.mastered img.item { 
+    content:url("../images/star.png"); 
 }
 
 #mastery-table .mastery-row .statBox.first{
