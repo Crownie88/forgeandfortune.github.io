@@ -38,6 +38,7 @@ function afterLoad() {
     refreshEvents();
     hardMatRefresh();
     populateRecipe("Knives");
+    PopulateMasteryOverview();//Populate fake table before progress refresh
     refreshProgress();
     initializeSideBarDungeon();
     recipeCanCraft();
