@@ -2666,6 +2666,35 @@ Rarities
     background: var(--scheme-webkit);
 }
 
+/* Mastery grid */
+#mastery-table {
+    width: 100%; 
+    display: table; 
+    table-layout: fixed;
+}
+
+#mastery-table .mastery-row {
+    display: table-row;
+}
+
+#mastery-table .mastery-row .statBox img {
+    display:block; 
+    margin:auto; 
+    height: 24px;
+}
+
+#mastery-table .mastery-row .statBox img.item { 
+}
+
+#mastery-table .mastery-row .statBox.first{
+    text-align: left;
+}
+
+#mastery-table .mastery-row .statBox{
+    display: table-cell;
+    text-align: center;
+}
+
 /* Events / Mail Content */
 
 #eventTab {
