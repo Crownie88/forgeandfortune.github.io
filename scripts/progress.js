@@ -24,6 +24,7 @@ function refreshProgress() {
     if (overallPercent === 100 && achievementStats.endTime === -1) achievementStats.endTime = Date.now();
     $plOverall.html((overallPercent * 100).toFixed(2)+"%");
     $pbOverall.css('width', (overallPercent*100).toFixed(2)+"%");
+    ReloadMasteries();
 }
 
 const $statMaxFloor = $("#statMaxFloor");
@@ -114,6 +115,30 @@ const achievementStats = {
         $statGoods.html(this.goodsCrafted);
         $statGreats.html(this.greatsCrafted);
         $statEpics.html(this.epicsCrafted);
+    }
+}
+
+function ReloadMasteries(){
+    var mastered = recipeList.recipes.filter(r=>r.isMastered());
+    console.log(mastered.length);
+    for (var i=0; i<mastered.length; i++){
+        var id = mastered[i].type + 'T' + (mastered[i].lvl);
+        if (!$('#'+id).hasClass('mastered')){
+            $('#'+id).addClass('mastered');
+        }
+    }
+}
+
+function PopulateMasteryOverview(){
+    console.log('Populating');
+    var itemCount = recipeList.listByType(ItemType[0]).length;
+    for (var i=0; i<ItemType.length; i++) {
+        var TableRow = '<div class="mastery-row" id="' + ItemType[i] + 'Mastery" style="display: table-row;"><div class="statBox first"><span>' + ItemType[i] + '</span></div>';
+        for (var j=0; j<itemCount; j++){
+            TableRow = TableRow + '<div id="' + ItemType[i] + 'T' + (j+1) + '" class="statBox"><img class="item"></div>';
+        }
+        TableRow = TableRow + '</div>';
+        $('#mastery-table').append(TableRow);
     }
 }
 
